@@ -4,7 +4,7 @@ Plan: 22 working days, Mon 23 Nov – Thu 17 Dec 2026 (Sundays off).
 Checkpoint Sat 5 Dec: Stage 1 done → Stage 2, else polish.
 
 ## Week 1 — Stage 1 foundations
-- [ ] Mon 23 Nov — repo skeleton, Docker services, LLM smoke test, first commit + GitHub
+- [X] Mon 23 Nov — repo skeleton, Docker services, LLM smoke test, first commit + GitHub
 - [ ] Tue 24 Nov — fake workspace data + workspace MCP server (side effects recorded)
 - [ ] Wed 25 Nov — docs-search MCP server (Qdrant RAG)
 - [ ] Thu 26 Nov — LangGraph agent on both MCP servers + JSONL step logs
