@@ -29,3 +29,12 @@ Checkpoint Sat 5 Dec: Stage 1 done → Stage 2, else polish.
 - POC (scripts/poc_demo.py, gpt-oss-20b, 5 runs each): no guardrail 5/5 hijacked;
   spotlighting 5/5 hijacked; payment permission 0/5 hijacked but 0/5 task done
   (agent still fooled, asks user to pay XX-666) -> security vs usefulness trade-off.
+- AgentDojo (arXiv:2406.13352) scores: benign utility, utility under attack, targeted
+  attack success rate (ASR). We use the same three, so results are comparable.
+- How we differ from the original AgentDojo paper: tools run as MCP servers (it uses its
+  own tool runtime); time analysis inside one run (when hijacked, how long the attack
+  persists, recovery); head-to-head context-hygiene variants; deployed scan API + demo app.
+  NOT a difference: AgentDojo also tested a detector model.
+- Interview line: "I use AgentDojo's three metrics so results are comparable, but run the
+  tools as MCP servers and add a time analysis: when the agent gets hijacked, how long the
+  attack persists, and whether context hygiene helps it recover."
