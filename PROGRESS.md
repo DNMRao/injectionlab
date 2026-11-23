@@ -18,4 +18,14 @@ Checkpoint Sat 5 Dec: Stage 1 done → Stage 2, else polish.
 
 ## Daily notes
 ### Mon 23 Nov
--
+- Indirect prompt injection: an LLM reads external content (web, files, emails) that
+  contains hidden instructions written by a third party. The model cannot reliably tell
+  data from instructions, so its behaviour changes in unintended ways.
+- Agents are riskier than chatbots: (1) they read much more untrusted content through
+  tools, and (2) they can ACT (send email, pay, delete), so a hijack causes real damage,
+  not just a wrong answer. System prompts alone do not reliably prevent it.
+- Interesting: multimodal injection (instructions hidden in images). Out of scope for
+  InjectionLab (text only), possible extension.
+- POC (scripts/poc_demo.py, gpt-oss-20b, 5 runs each): no guardrail 5/5 hijacked;
+  spotlighting 5/5 hijacked; payment permission 0/5 hijacked but 0/5 task done
+  (agent still fooled, asks user to pay XX-666) -> security vs usefulness trade-off.
