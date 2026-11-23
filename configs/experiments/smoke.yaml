@@ -1,0 +1,8 @@
+# Every experiment is a config file like this — no hard-coded settings in code.
+name: smoke
+model: ${LLM_MODEL}
+defence: none          # none | spotlighting | tool_permissions | hygiene_* | lora_detector
+tasks: data/tasks      # filled on Fri 27 Nov
+attacks: []            # filled from Mon 30 Nov
+repeats: 3
+seed: 0
