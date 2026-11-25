@@ -5,7 +5,7 @@ Checkpoint Sat 5 Dec: Stage 1 done → Stage 2, else polish.
 
 ## Week 1 — Stage 1 foundations
 - [X] Mon 23 Nov — repo skeleton, Docker services, LLM smoke test, first commit + GitHub
-- [x ] Tue 24 Nov — fake workspace data + workspace MCP server (side effects recorded)
+- [X] Tue 24 Nov — fake workspace data + workspace MCP server (side effects recorded)
 - [ ] Wed 25 Nov — docs-search MCP server (Qdrant RAG)
 - [ ] Thu 26 Nov — LangGraph agent on both MCP servers + JSONL step logs
 - [ ] Fri 27 Nov — ~60 normal tasks + automatic graders
