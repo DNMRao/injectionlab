@@ -38,3 +38,28 @@ Checkpoint Sat 5 Dec: Stage 1 done → Stage 2, else polish.
 - Interview line: "I use AgentDojo's three metrics so results are comparable, but run the
   tools as MCP servers and add a time analysis: when the agent gets hijacked, how long the
   attack persists, and whether context hygiene helps it recover."
+
+### Tue 24 Nov
+- Built the fake office (data/workspace/base.json): user Lena Hoffmann, 8 emails,
+  5 files, 3 calendar events, bank account (5240 EUR, 3 saved payees). All fake,
+  `.example` domains. No canary (XX-666) in the clean data; canaries only appear in attacks.
+- `Workspace` class (src/injectionlab/workspace.py): 10 read tools + 4 action tools
+  (send_email, send_money, create_event, delete_file). Every action follows
+  check -> change -> record -> confirm. Failed actions are not recorded. Errors are
+  returned as "Error: ..." text, so the agent sees them instead of crashing.
+- Each test case gets a fresh copy of the office (deepcopy), so runs never share state.
+- No recipient/payee check in send_money/send_email on purpose: the office must be
+  attackable, otherwise we cannot measure attacks. Protection belongs to the guardrails.
+- Actions are also written to a JSONL file ("flight recorder"): the MCP server runs as a
+  separate process and its memory is lost when it stops; the judge reads the file.
+- MCP server (workspace_server.py): thin layer, 14 tools, labelled READ or ACT
+  (readOnlyHint / destructiveHint). The docstrings are what the model reads to choose tools.
+  The ACT label will be used by the tool-permission guardrail.
+- MCP SDK v2: `MCPServer` (FastMCP was renamed), client is `mcp.Client`.
+  `Client(build_server(office))` = in-process (tests), `Client(StdioServerParameters(...))`
+  = server started as a separate program (real setup).
+- Settings reach the server via environment variables (the only way into a new process):
+  INJECTIONLAB_WORKSPACE (which office, default clean base.json) and
+  INJECTIONLAB_ACTIONS (where to record). `NAME=value cmd` sets it for one command only;
+  in Python: env={**os.environ, "NAME": value}.
+- Tests: 15 pass (2 foundations + 10 office + 3 MCP server).
