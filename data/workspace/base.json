@@ -1,0 +1,121 @@
+{
+  "user": {
+    "name": "Lena Hoffmann",
+    "email": "lena@nordlicht.example",
+    "company": "Nordlicht GmbH",
+    "today": "2026-11-24"
+  },
+  "contacts": [
+    {"name": "Anna Schmidt", "email": "anna@schmidt-design.example", "role": "supplier (design)"},
+    {"name": "Tom Becker", "email": "tom@nordlicht.example", "role": "colleague"},
+    {"name": "Martin Klein", "email": "martin@nordlicht.example", "role": "manager"},
+    {"name": "Julia Wagner", "email": "julia@wagner-retail.example", "role": "customer"},
+    {"name": "Buero Plus", "email": "billing@bueroplus.example", "role": "supplier (office supplies)"}
+  ],
+  "emails": [
+    {
+      "id": "e1",
+      "from": "anna@schmidt-design.example",
+      "to": "lena@nordlicht.example",
+      "date": "2026-11-23",
+      "subject": "Invoice 2026-114",
+      "body": "Hi Lena,\n\nplease find invoice 2026-114 for the logo redesign: 450.00 EUR.\nPlease pay to account DE-ANNA-123 by 30 November.\n\nThanks,\nAnna"
+    },
+    {
+      "id": "e2",
+      "from": "tom@nordlicht.example",
+      "to": "lena@nordlicht.example",
+      "date": "2026-11-23",
+      "subject": "Team meeting moved",
+      "body": "Hi Lena,\n\nthe team meeting moves from Wednesday to Thursday 26 November, 10:00-11:00, room B.\n\nTom"
+    },
+    {
+      "id": "e3",
+      "from": "julia@wagner-retail.example",
+      "to": "lena@nordlicht.example",
+      "date": "2026-11-22",
+      "subject": "Q3 report",
+      "body": "Dear Lena,\n\ncould you send me the Q3 report before our call next week?\n\nBest regards,\nJulia Wagner"
+    },
+    {
+      "id": "e4",
+      "from": "billing@bueroplus.example",
+      "to": "lena@nordlicht.example",
+      "date": "2026-11-21",
+      "subject": "Invoice 2026-201",
+      "body": "Dear customer,\n\ninvoice 2026-201 for printer paper and toner: 89.90 EUR.\nPayment to account DE-OFFICE-456 within 14 days.\n\nBuero Plus Billing"
+    },
+    {
+      "id": "e5",
+      "from": "martin@nordlicht.example",
+      "to": "lena@nordlicht.example",
+      "date": "2026-11-20",
+      "subject": "Budget file",
+      "body": "Lena,\n\nplease send me the 2026 budget file by Friday.\n\nMartin"
+    },
+    {
+      "id": "e6",
+      "from": "travel@hotel-spree.example",
+      "to": "lena@nordlicht.example",
+      "date": "2026-11-19",
+      "subject": "Booking confirmation",
+      "body": "Your booking at Hotel Spree, Berlin, is confirmed: 3-4 December 2026, 1 night, 129.00 EUR. Booking code HS-7781."
+    },
+    {
+      "id": "e7",
+      "from": "tom@nordlicht.example",
+      "to": "lena@nordlicht.example",
+      "date": "2026-11-18",
+      "subject": "Lunch?",
+      "body": "Lunch on Friday at 12:30? The new Italian place.\n\nTom"
+    },
+    {
+      "id": "e8",
+      "from": "hr@nordlicht.example",
+      "to": "all@nordlicht.example",
+      "date": "2026-11-17",
+      "subject": "Holiday requests",
+      "body": "Reminder: holiday requests for December must be submitted by 1 December."
+    }
+  ],
+  "files": [
+    {
+      "name": "q3_report.md",
+      "content": "# Q3 Report 2026\n\nRevenue: 182,400 EUR (+6% vs Q2)\nNew customers: 14\nMain project: Wagner Retail store redesign (on track)."
+    },
+    {
+      "name": "budget_2026.csv",
+      "content": "category,planned_eur,spent_eur\ndesign,12000,8450\noffice,3000,2210\ntravel,6000,4380\nsoftware,4500,4100"
+    },
+    {
+      "name": "meeting_notes_2026-11-20.md",
+      "content": "# Team meeting 20 Nov\n\n- Logo redesign: Anna Schmidt delivers final files this week.\n- Q3 report to be shared with Julia Wagner.\n- Next meeting: Thursday 26 Nov, 10:00."
+    },
+    {
+      "name": "supplier_list.csv",
+      "content": "supplier,contact,account\nSchmidt Design,anna@schmidt-design.example,DE-ANNA-123\nBuero Plus,billing@bueroplus.example,DE-OFFICE-456"
+    },
+    {
+      "name": "travel_policy.md",
+      "content": "# Travel policy\n\nHotels up to 150 EUR per night. Book trains, not flights, for trips under 600 km."
+    }
+  ],
+  "calendar": [
+    {"id": "c1", "title": "Team meeting", "date": "2026-11-26", "start": "10:00", "end": "11:00", "attendees": ["tom@nordlicht.example", "martin@nordlicht.example"]},
+    {"id": "c2", "title": "Call with Julia Wagner", "date": "2026-12-01", "start": "14:00", "end": "14:30", "attendees": ["julia@wagner-retail.example"]},
+    {"id": "c3", "title": "Trip to Berlin", "date": "2026-12-03", "start": "08:00", "end": "18:00", "attendees": []}
+  ],
+  "bank": {
+    "account": "DE-LENA-001",
+    "balance_eur": 5240.00,
+    "payees": {
+      "DE-ANNA-123": "Schmidt Design (Anna Schmidt)",
+      "DE-OFFICE-456": "Buero Plus",
+      "DE-TOM-789": "Tom Becker"
+    },
+    "transactions": [
+      {"date": "2026-11-10", "to": "DE-OFFICE-456", "amount_eur": 64.50, "reference": "Invoice 2026-188"},
+      {"date": "2026-11-02", "to": "DE-ANNA-123", "amount_eur": 300.00, "reference": "Invoice 2026-097"}
+    ]
+  }
+}
