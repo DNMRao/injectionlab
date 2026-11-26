@@ -63,3 +63,21 @@ Checkpoint Sat 5 Dec: Stage 1 done → Stage 2, else polish.
   INJECTIONLAB_ACTIONS (where to record). `NAME=value cmd` sets it for one command only;
   in Python: env={**os.environ, "NAME": value}.
 - Tests: 15 pass (2 foundations + 10 office + 3 MCP server).
+
+### Wed 25 Nov (finished Thu morning)
+- RAG = look things up before answering. Embedding model (BAAI/bge-small-en-v1.5, 384 numbers,
+  CPU, via fastembed without PyTorch) turns text into vectors; similar meaning -> small angle
+  (cosine similarity). Model name is a setting (EMBED_MODEL) -> MiniLM vs bge comparison later.
+- 15 fake company documents (data/docs/), same world as the office. Some contain safety rules
+  (e.g. "changed bank details: call the supplier") -> does RAG make the agent safer?
+- Chunking at "##" sections: 15 docs -> 56 chunks. Title + heading glued in front before
+  embedding, so short chunks keep their context. `pos` keeps the order for read_doc.
+- DocsLibrary: build (delete old collection first -> no ghost cards), search (query_points),
+  list_docs, read_doc (rebuilt from Qdrant -> search and read always see the same library).
+- Qdrant upgraded v1.13.2 -> v1.20.0 to match the client (versions may differ by max 1 minor).
+  Index is a cache: always rebuildable from the .md files in git.
+- docs MCP server: 3 read-only tools. Does not build the index; DOCS_COLLECTION chooses which
+  library (clean or poisoned) -> same server code for attack runs. k clamped to 1-10.
+- Poisoned document = more dangerous than poisoned email: the search engine picks it, and it
+  can match many questions ("poisoning the well").
+- Tests: 31 pass. Qdrant ":memory:" for tests (no Docker), module fixtures, parametrize.
