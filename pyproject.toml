@@ -5,10 +5,13 @@ description = "Measuring how prompt injections spread through AI agents, and how
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "fastembed>=0.9.1",
     "langchain-openai>=0.3",
     "mcp>=2.3.0",
+    "numpy>=2.4.6",
     "pydantic-settings>=2.6",
     "pyyaml>=6.0",
+    "qdrant-client>=1.20.0",
 ]
 
 [dependency-groups]
