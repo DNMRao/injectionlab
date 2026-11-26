@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     llm_model: str = "openai/gpt-oss-20b"
 
     qdrant_url: str = "http://localhost:6333"
+    docs_collection: str = "docs"
+    embed_model: str = "BAAI/bge-small-en-v1.5"
     mlflow_tracking_uri: str = "http://localhost:5000"
     runs_dir: str = "runs"
 

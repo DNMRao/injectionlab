@@ -1,7 +1,7 @@
 # Day-1 infrastructure. Start: docker compose up -d   Stop: docker compose down
 services:
   qdrant:            # vector database for the docs-search MCP server (RAG)
-    image: qdrant/qdrant:v1.13.2
+    image: qdrant/qdrant:v1.20.0
     ports: ["6333:6333"]
     volumes: [qdrant_data:/qdrant/storage]
 

@@ -6,7 +6,7 @@ Run:  uv run python scripts/try_embeddings.py
 """
 
 import numpy as np
-from fastembed import TextEmbedding 
+from fastembed import TextEmbedding
 
 texts = [
     "Travel policy: hotels up to 150 EUR per night, economy class flights.",
