@@ -14,4 +14,5 @@ def get_chat_model(temperature: float = 0.0) -> ChatOpenAI:
         api_key=s.llm_api_key,
         model=s.llm_model,
         temperature=temperature,
+        max_retries=6,  # waits and retries on rate limits (429) and timeouts only
     )
