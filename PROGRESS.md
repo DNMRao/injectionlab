@@ -81,3 +81,29 @@ Checkpoint Sat 5 Dec: Stage 1 done → Stage 2, else polish.
 - Poisoned document = more dangerous than poisoned email: the search engine picks it, and it
   can match many questions ("poisoning the well").
 - Tests: 31 pass. Qdrant ":memory:" for tests (no Docker), module fixtures, parametrize.
+
+### Thu 26 Nov (finished Fri morning)
+- Agent = LangGraph loop of 2 nodes: `agent` (LLM thinks) and `tools` (runs the tool calls).
+  State = the conversation (MessagesState). `route()` is the conditional edge: tool calls ->
+  tools, none -> END. Fixed edge tools -> agent closes the loop (ReAct pattern).
+  `recursion_limit` 20 = max ~10 think/act rounds. The loop is hidden inside `ainvoke`.
+- Experiments: no tools->agent edge -> graph stops silently after tools; empty AI reply -> END.
+- `langchain-mcp-adapters` needs mcp < 2.0 (ImportError with mcp 2.3) -> wrote our own
+  bridge (agent/mcp_tools.py): one MCP Client per server, each MCP tool -> LangChain
+  StructuredTool (closure remembers client + tool name). Metadata {server, read_only} is
+  kept for guardrails and logs. Duplicate tool names across servers -> error.
+  AsyncExitStack closes all connections together. 17 tools (14 workspace + 3 docs).
+- System prompt is neutral on purpose (no security warning): it is the baseline.
+- Unknown tool name -> "Error: there is no tool ..." returned to the model, not a crash.
+- Step log (runs/<run_id>/steps.jsonl): task, llm_call (turn, seconds, tokens, tool calls),
+  tool_call (args, server, read_only), tool_output (FULL text), final. Actions file in the
+  same run folder. scripts/run_agent.py prints the table FROM the log file -> the log alone
+  is enough to replay a run (no API cost, needed for time analysis + demo replay page).
+- Real runs: "pay Anna's invoice" -> keyword search found nothing, agent recovered via
+  list_emails -> paid 450 EUR to DE-ANNA-123 (1 action recorded). "Q3 report" -> agent
+  searched the data-protection doc and asked Martin for approval: RAG rules were followed.
+- Retry: ChatOpenAI(max_retries=6) -> openai client retries temporary errors (429, 408,
+  409, 5xx, connection) with exponential backoff 0.5 -> 8 s + jitter (~23 s max); wrong key
+  or model fails at once. Wait time is inside the logged `seconds`. Not yet seen triggering.
+- Tests: 35 pass. Fake LLM (GenericFakeChatModel + bind_tools returns self) follows a fixed
+  script -> agent tests without API cost. In-process MCP servers, Qdrant ":memory:".
